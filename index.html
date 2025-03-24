@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Plumbing Services | Your Plumbing Specialist in Cologne</title>
+    <style>
+        /* Reset and enhanced base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Enhanced scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #2a2a2a;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #3a5f8a, #2e4a6d);
+            border-radius: 6px;
+            border: 2px solid #2a2a2a;
+        }
+        
+        /* Header styles with animation */
+        header {
+            background: linear-gradient(135deg, rgba(20, 40, 65, 0.95), rgba(10, 20, 35, 0.95));
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        
+        .logo {
+            color: white;
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.7rem 1rem;
+            border-radius: 10px;
+            transition: all 0.4s ease;
+            font-weight: 600;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-btn {
+            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Hero section with 3D canvas */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        #three-js-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.7;
+        }
+        
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+        
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.5) blur(2px);
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(20, 40, 65, 0.85), rgba(10, 20, 35, 0.7));
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            padding: 0 5%;
+            margin-top: 100px;
+            color: white;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, #3a5f8a, transparent);
+            border-radius: 3px;
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.4s ease;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            transform: perspective(500px) rotateX(0deg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            transform: perspective(500px) rotateX(8deg) translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s ease;
+        }
+        
+        .btn:hover::after {
+            width: 400px;
+            height: 400px;
+        }
+        
+        /* Services section */
+        .services {
+            padding: 10rem 5% 6rem;
+            background: #252525;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: #252525;
+            clip-path: ellipse(80% 60px at center top);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 3rem;
+            color: #3a5f8a;
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 5px;
+            background: linear-gradient(90deg, #3a5f8a, transparent);
+        }
+        
+        .section-title p {
+            color: #b0b0b0;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background: #303030;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+            perspective: 1200px;
+            position: relative;
+        }
+        
+        .service-card:hover {
+            transform: rotateY(12deg) rotateX(12deg) translateZ(30px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .service-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover img {
+            transform: scale(1.08);
+        }
+        
+        .service-content {
+            padding: 2.5rem;
+        }
+        
+        .service-content h3 {
+            color: #3a5f8a;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+        
+        .service-content p {
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* About section */
+        .about {
+            padding: 10rem 5% 6rem;
+            background: #1a1a1a;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 4rem;
+            position: relative;
+        }
+        
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: #1a1a1a;
+            clip-path: ellipse(80% 60px at center top);
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 320px;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .about-image:hover {
+            transform: rotateY(5deg) rotateX(5deg);
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-content {
+            flex: 1;
+            min-width: 320px;
+        }
+        
+        .about-content h2 {
+            color: #3a5f8a;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-weight: 900;
+            position: relative;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .about-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 70px;
+            height: 5px;
+            background: linear-gradient(90deg, #3a5f8a, transparent);
+        }
+        
+        .about-content p {
+            margin-bottom: 2rem;
+            color: #b0b0b0;
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a0a0a, #151515);
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: #1a1a1a;
+            clip-path: ellipse(80% 60px at center top);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            text-align: left;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 220px;
+            margin-bottom: 2rem;
+            padding: 0 1.5rem;
+        }
+        
+        .footer-col h3 {
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            position: relative;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 4px;
+            background: linear-gradient(90deg, #3a5f8a, transparent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            position: relative;
+            padding-left: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .footer-links a::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 25px;
+        }
+        
+        .footer-links a:hover::before {
+            opacity: 1;
+        }
+        
+        .footer-bottom {
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        
+        .copyright {
+            opacity: 0.8;
+            font-size: 1rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Enhanced Media Queries */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .section-title h2, .about-content h2 {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+            }
+            
+            .service-card img {
+                height: 240px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1rem 3%;
+            }
+            
+            .logo {
+                margin-bottom: 1.5rem;
+                font-size: 1.8rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .hero {
+                padding-top: 140px;
+                padding-bottom: 4rem;
+                text-align: center;
+            }
+            
+            .hero-content {
+                max-width: 90%;
+                margin-top: 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .btn {
+                padding: 1rem 2rem;
+                font-size: 0.9rem;
+            }
+            
+            .services, .about {
+                padding: 6rem 3% 4rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .service-card {
+                border-radius: 16px;
+            }
+            
+            .service-content {
+                padding: 2rem;
+            }
+            
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .about-image {
+                order: -1;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .about-content h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            footer {
+                padding: 3rem 3%;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-col h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .footer-links a {
+                padding-left: 0;
+            }
+            
+            .footer-links a:hover {
+                padding-left: 5px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title p {
+                font-size: 1rem;
+            }
+            
+            .service-content h3 {
+                font-size: 1.5rem;
+            }
+            
+            .service-content p {
+                font-size: 0.95rem;
+            }
+            
+            .about-content h2 {
+                font-size: 2rem;
+            }
+            
+            .about-content p {
+                font-size: 1rem;
+            }
+            
+            .footer-col h3 {
+                font-size: 1.3rem;
+            }
+            
+            .footer-links a {
+                font-size: 0.95rem;
+            }
+            
+            .copyright {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">BERB</div>
+        <nav>
+            <ul>
+                <li><a href="#services">Sanitary</a></li>
+                <li><a href="#heating">Heating</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#references">References</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact" class="contact-btn">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Hero Section with Three.js Canvas -->
+    <section class="hero">
+        <canvas id="three-js-canvas"></canvas>
+        <div class="hero-image-container">
+            <img src="https://parametric-architecture.com/wp-content/uploads/2024/07/Kitchen-Sink-3.webp" alt="Modern kitchen sink design">
+        </div>
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>YOUR PLUMBING SPECIALIST IN COLOGNE</h1>
+            <p>We are a certified company delivering cutting-edge plumbing solutions with 3D technology for you & your company.</p>
+            <a href="#contact" class="btn">Contact</a>
+            <a href="#services" class="btn" style="margin-left: 15px; background: transparent; border: 2px solid white;">Learn More</a>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-title">
+            <h2>Our Premium 3D Plumbing Services</h2>
+            <p>Experience state-of-the-art plumbing solutions with advanced 3D design technology for residential and commercial properties in Cologne.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Modern bathroom installation">
+                <div class="service-content">
+                    <h3>3D Bathroom Installation</h3>
+                    <p>Transform your space with our innovative 3D bathroom design and installation services, from virtual planning to flawless execution.</p>
+                    <a href="#contact" class="btn">Get 3D Quote</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Advanced heating systems">
+                <div class="service-content">
+                    <h3>3D Heating Solutions</h3>
+                    <p>Advanced heating system design and installation using 3D modeling for maximum efficiency and performance.</p>
+                    <a href="#contact" class="btn">Get 3D Quote</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1576675761319-53edca9b8e66?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Emergency plumbing service">
+                <div class="service-content">
+                    <h3>3D Emergency Plumbing</h3>
+                    <p>Rapid response plumbing with 3D diagnostic technology for precise, efficient solutions to urgent issues.</p>
+                    <a href="#contact" class="btn">Get 3D Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Plumbing team">
+        </div>
+        <div class="about-content">
+            <h2>About Us</h2>
+            <p>With over 15 years of expertise, we lead the way in innovative plumbing solutions using advanced 3D technology. Our certified Cologne-based team is committed to excellence in every project.</p>
+            <p>Blending traditional craftsmanship with modern 3D design, we deliver precision and satisfaction for both residential and commercial clients.</p>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>BERB Plumbing</h3>
+                <p>Your trusted plumbing specialist in Cologne since 2008.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <p>Email: info@berbplumbing.de</p>
+                <p>Phone: +49 221 123 4567</p>
+                <p>Cologne, Germany</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">© 2025 BERB Plumbing. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Three.js Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script>
+        // Three.js 3D Pipe Animation
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ 
+            canvas: document.getElementById('three-js-canvas'),
+            alpha: true 
+        });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+
+        // Create a pipe-like 3D object
+        const geometry = new THREE.TubeGeometry(
+            new THREE.CatmullRomCurve3([
+                new THREE.Vector3(-10, 0, 0),
+                new THREE.Vector3(-5, 5, 0),
+                new THREE.Vector3(0, 0, 0),
+                new THREE.Vector3(5, -5, 0),
+                new THREE.Vector3(10, 0, 0)
+            ]),
+            100, // tubular segments
+            0.5, // radius
+            8,   // radial segments
+            false // closed
+        );
+        
+        const material = new THREE.MeshPhongMaterial({
+            color: 0x3a5f8a,
+            shininess: 100,
+            specular: 0x555555,
+            side: THREE.DoubleSide
+        });
+        
+        const pipe = new THREE.Mesh(geometry, material);
+        scene.add(pipe);
+
+        // Add lighting
+        const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
+        scene.add(ambientLight);
+        
+        const pointLight = new THREE.PointLight(0xffffff, 1);
+        pointLight.position.set(10, 10, 10);
+        scene.add(pointLight);
+
+        camera.position.z = 15;
+
+        // Animation
+        function animate() {
+            requestAnimationFrame(animate);
+            pipe.rotation.y += 0.01;
+            pipe.rotation.x += 0.005;
+            renderer.render(scene, camera);
+        }
+        
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
