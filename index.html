@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium Plumbing Services | Your Plumbing Specialist in Cologne</title>
     <style>
-        /* Reset and enhanced base styles */
+        /* Reset and base styles */
         * {
             margin: 0;
             padding: 0;
@@ -14,31 +14,31 @@
         }
         
         body {
-            background-color: #1a1a1a;
-            color: #e0e0e0;
+            background-color: #000000;
+            color: white;
             line-height: 1.6;
             overflow-x: hidden;
+            cursor: crosshair;
         }
         
-        /* Enhanced scrollbar */
+        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 12px;
         }
         
         ::-webkit-scrollbar-track {
-            background: #2a2a2a;
-            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+            background: #1a1a1a;
         }
         
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(45deg, #3a5f8a, #2e4a6d);
+            background: #dc3545;
             border-radius: 6px;
-            border: 2px solid #2a2a2a;
+            border: 2px solid #1a1a1a;
         }
         
-        /* Header styles with animation */
+        /* Header */
         header {
-            background: linear-gradient(135deg, rgba(20, 40, 65, 0.95), rgba(10, 20, 35, 0.95));
+            background: rgba(0, 0, 0, 0.7);
             padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
@@ -49,12 +49,6 @@
             z-index: 1000;
             backdrop-filter: blur(15px);
             box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
-            animation: slideIn 0.5s ease-out;
-        }
-        
-        @keyframes slideIn {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
         }
         
         .logo {
@@ -65,14 +59,19 @@
             text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
         
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        
         nav ul {
             display: flex;
             list-style: none;
+            margin: 0;
         }
         
         nav ul li {
             margin-left: 2rem;
-            position: relative;
         }
         
         nav ul li a {
@@ -80,7 +79,6 @@
             text-decoration: none;
             font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
             padding: 0.7rem 1rem;
             border-radius: 10px;
             transition: all 0.4s ease;
@@ -88,17 +86,24 @@
         }
         
         nav ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.15);
+            background-color: #dc3545;
             transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
         .contact-btn {
-            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            background: #dc3545;
         }
         
-        /* Hero section with 3D canvas */
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        
+        /* Hero section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -106,9 +111,10 @@
             position: relative;
             overflow: hidden;
             padding-top: 80px;
+            text-align: center;
         }
         
-        #three-js-canvas {
+        canvas {
             position: absolute;
             top: 0;
             left: 0;
@@ -131,7 +137,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.5) blur(2px);
+            filter: brightness(0.3);
         }
         
         .overlay {
@@ -140,54 +146,34 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(20, 40, 65, 0.85), rgba(10, 20, 35, 0.7));
+            background: rgba(0, 0, 0, 0.5);
             z-index: -1;
         }
         
         .hero-content {
             max-width: 700px;
             padding: 0 5%;
-            margin-top: 100px;
+            margin: 0 auto;
             color: white;
             position: relative;
             z-index: 2;
-            animation: fadeInUp 1s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         
         .hero h1 {
             font-size: 4rem;
             font-weight: 900;
             margin-bottom: 2rem;
-            line-height: 1.1;
             text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            position: relative;
-        }
-        
-        .hero h1::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 0;
-            width: 100px;
-            height: 5px;
-            background: linear-gradient(90deg, #3a5f8a, transparent);
-            border-radius: 3px;
         }
         
         .hero p {
             font-size: 1.4rem;
             margin-bottom: 3rem;
-            opacity: 0.95;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            color: rgba(255, 255, 255, 0.5);
         }
         
         .btn {
-            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+            background: #dc3545;
             color: white;
             padding: 1.2rem 2.5rem;
             border-radius: 50px;
@@ -195,83 +181,36 @@
             font-weight: 700;
             transition: all 0.4s ease;
             font-size: 1rem;
-            letter-spacing: 1px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-            transform: perspective(500px) rotateX(0deg);
-            position: relative;
-            overflow: hidden;
+            display: inline-block;
         }
         
         .btn:hover {
-            transform: perspective(500px) rotateX(8deg) translateY(-5px);
+            background: #ff4555;
+            transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-        }
-        
-        .btn::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: all 0.5s ease;
-        }
-        
-        .btn:hover::after {
-            width: 400px;
-            height: 400px;
         }
         
         /* Services section */
         .services {
             padding: 10rem 5% 6rem;
-            background: #252525;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .services::before {
-            content: '';
-            position: absolute;
-            top: -60px;
-            left: 0;
-            width: 100%;
-            height: 120px;
-            background: #252525;
-            clip-path: ellipse(80% 60px at center top);
+            background: #1a1a1a;
         }
         
         .section-title {
             text-align: center;
             margin-bottom: 5rem;
-            position: relative;
         }
         
         .section-title h2 {
             font-size: 3rem;
-            color: #3a5f8a;
+            color: #dc3545;
             margin-bottom: 1.5rem;
             font-weight: 900;
-            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 70px;
-            height: 5px;
-            background: linear-gradient(90deg, #3a5f8a, transparent);
         }
         
         .section-title p {
-            color: #b0b0b0;
+            color: rgba(255, 255, 255, 0.5);
             max-width: 700px;
             margin: 0 auto;
             font-size: 1.2rem;
@@ -281,22 +220,18 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 3rem;
-            margin-top: 3rem;
         }
         
         .service-card {
-            background: #303030;
+            background: #252525;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
             transition: all 0.5s ease;
-            transform-style: preserve-3d;
-            perspective: 1200px;
-            position: relative;
         }
         
         .service-card:hover {
-            transform: rotateY(12deg) rotateX(12deg) translateZ(30px);
+            transform: translateY(-10px);
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
         }
         
@@ -304,11 +239,6 @@
             width: 100%;
             height: 280px;
             object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .service-card:hover img {
-            transform: scale(1.08);
         }
         
         .service-content {
@@ -316,14 +246,14 @@
         }
         
         .service-content h3 {
-            color: #3a5f8a;
+            color: #dc3545;
             margin-bottom: 1.2rem;
             font-size: 1.8rem;
             font-weight: 800;
         }
         
         .service-content p {
-            color: #b0b0b0;
+            color: rgba(255, 255, 255, 0.5);
             margin-bottom: 2rem;
             font-size: 1.1rem;
         }
@@ -331,48 +261,24 @@
         /* About section */
         .about {
             padding: 10rem 5% 6rem;
-            background: #1a1a1a;
+            background: #000000;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             gap: 4rem;
-            position: relative;
-        }
-        
-        .about::before {
-            content: '';
-            position: absolute;
-            top: -60px;
-            left: 0;
-            width: 100%;
-            height: 120px;
-            background: #1a1a1a;
-            clip-path: ellipse(80% 60px at center top);
         }
         
         .about-image {
             flex: 1;
             min-width: 320px;
-            position: relative;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-        
-        .about-image:hover {
-            transform: rotateY(5deg) rotateX(5deg);
         }
         
         .about-image img {
             width: 100%;
             border-radius: 20px;
-            transition: transform 0.5s ease;
-        }
-        
-        .about-image:hover img {
-            transform: scale(1.05);
         }
         
         .about-content {
@@ -381,49 +287,24 @@
         }
         
         .about-content h2 {
-            color: #3a5f8a;
+            color: #dc3545;
             font-size: 3rem;
             margin-bottom: 2rem;
             font-weight: 900;
-            position: relative;
-            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-        }
-        
-        .about-content h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 0;
-            width: 70px;
-            height: 5px;
-            background: linear-gradient(90deg, #3a5f8a, transparent);
         }
         
         .about-content p {
             margin-bottom: 2rem;
-            color: #b0b0b0;
+            color: rgba(255, 255, 255, 0.5);
             font-size: 1.2rem;
         }
         
         /* Footer */
         footer {
-            background: linear-gradient(135deg, #0a0a0a, #151515);
+            background: #1a1a1a;
             color: white;
             padding: 4rem 5%;
             text-align: center;
-            position: relative;
-            box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.5);
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            top: -60px;
-            left: 0;
-            width: 100%;
-            height: 120px;
-            background: #1a1a1a;
-            clip-path: ellipse(80% 60px at center top);
         }
         
         .footer-content {
@@ -431,7 +312,6 @@
             flex-wrap: wrap;
             justify-content: space-between;
             margin-bottom: 3rem;
-            text-align: left;
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
@@ -448,18 +328,7 @@
             margin-bottom: 2rem;
             font-size: 1.5rem;
             font-weight: 700;
-            position: relative;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-        
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 40px;
-            height: 4px;
-            background: linear-gradient(90deg, #3a5f8a, transparent);
+            color: #dc3545;
         }
         
         .footer-links {
@@ -471,29 +340,14 @@
         }
         
         .footer-links a {
-            color: #b0b0b0;
+            color: rgba(255, 255, 255, 0.5);
             text-decoration: none;
             transition: all 0.4s ease;
-            position: relative;
-            padding-left: 20px;
             font-size: 1.1rem;
         }
         
-        .footer-links a::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            opacity: 0;
-            transition: all 0.4s ease;
-        }
-        
         .footer-links a:hover {
-            color: white;
-            padding-left: 25px;
-        }
-        
-        .footer-links a:hover::before {
-            opacity: 1;
+            color: #dc3545;
         }
         
         .footer-bottom {
@@ -502,18 +356,17 @@
         }
         
         .copyright {
-            opacity: 0.8;
+            color: rgba(255, 255, 255, 0.5);
             font-size: 1rem;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
         
-        /* Enhanced Media Queries */
+        /* Media Queries */
         @media (max-width: 1024px) {
             .hero h1 {
                 font-size: 3.5rem;
             }
             
-            .section-title h2, .about-content h2 {
+            .section-title h2 {
                 font-size: 2.5rem;
             }
             
@@ -529,34 +382,46 @@
         
         @media (max-width: 768px) {
             header {
-                flex-direction: column;
                 padding: 1rem 3%;
+                flex-wrap: wrap;
             }
             
             .logo {
-                margin-bottom: 1.5rem;
                 font-size: 1.8rem;
             }
             
+            .hamburger {
+                display: block;
+            }
+            
             nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.5rem;
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: rgba(0, 0, 0, 0.9);
+                padding: 1rem 0;
+            }
+            
+            nav ul.active {
+                display: flex;
             }
             
             nav ul li {
-                margin: 0.5rem;
-            }
-            
-            .hero {
-                padding-top: 140px;
-                padding-bottom: 4rem;
+                margin: 0.5rem 0;
+                width: 100%;
                 text-align: center;
             }
             
-            .hero-content {
-                max-width: 90%;
-                margin-top: 80px;
+            nav ul li a {
+                display: block;
+                padding: 1rem;
+            }
+            
+            .hero {
+                padding-top: 100px;
             }
             
             .hero h1 {
@@ -580,14 +445,6 @@
                 font-size: 2.2rem;
             }
             
-            .service-card {
-                border-radius: 16px;
-            }
-            
-            .service-content {
-                padding: 2rem;
-            }
-            
             .about {
                 flex-direction: column;
                 text-align: center;
@@ -599,11 +456,6 @@
                 margin: 0 auto;
             }
             
-            .about-content h2::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
             footer {
                 padding: 3rem 3%;
             }
@@ -611,19 +463,6 @@
             .footer-content {
                 flex-direction: column;
                 text-align: center;
-            }
-            
-            .footer-col h3::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .footer-links a {
-                padding-left: 0;
-            }
-            
-            .footer-links a:hover {
-                padding-left: 5px;
             }
         }
         
@@ -647,6 +486,14 @@
             
             .section-title p {
                 font-size: 1rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-card img {
+                height: 200px;
             }
             
             .service-content h3 {
@@ -684,6 +531,7 @@
     <header>
         <div class="logo">BERB</div>
         <nav>
+            <button class="hamburger">☰</button>
             <ul>
                 <li><a href="#services">Sanitary</a></li>
                 <li><a href="#heating">Heating</a></li>
@@ -695,11 +543,11 @@
         </nav>
     </header>
     
-    <!-- Hero Section with Three.js Canvas -->
+    <!-- Hero Section -->
     <section class="hero">
         <canvas id="three-js-canvas"></canvas>
         <div class="hero-image-container">
-            <img src="https://parametric-architecture.com/wp-content/uploads/2024/07/Kitchen-Sink-3.webp" alt="Modern kitchen sink design">
+            <img src="" alt="Modern kitchen sink design">
         </div>
         <div class="overlay"></div>
         <div class="hero-content">
@@ -734,7 +582,7 @@
                 </div>
             </div>
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1576675761319-53edca9b8e66?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Emergency plumbing service">
+                <img src="https://parametric-architecture.com/wp-content/uploads/2024/07/Kitchen-Sink-3.webp" alt="Emergency plumbing service">
                 <div class="service-content">
                     <h3>3D Emergency Plumbing</h3>
                     <p>Rapid response plumbing with 3D diagnostic technology for precise, efficient solutions to urgent issues.</p>
@@ -783,71 +631,221 @@
         </div>
     </footer>
 
-    <!-- Three.js Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script>
-        // Three.js 3D Pipe Animation
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ 
-            canvas: document.getElementById('three-js-canvas'),
-            alpha: true 
+        // Hamburger menu toggle
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            document.querySelector('nav ul').classList.toggle('active');
         });
-        
+
+        // Three JS City Animation
+        var renderer = new THREE.WebGLRenderer({antialias: true, canvas: document.getElementById('three-js-canvas')});
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
 
-        // Create a pipe-like 3D object
-        const geometry = new THREE.TubeGeometry(
-            new THREE.CatmullRomCurve3([
-                new THREE.Vector3(-10, 0, 0),
-                new THREE.Vector3(-5, 5, 0),
-                new THREE.Vector3(0, 0, 0),
-                new THREE.Vector3(5, -5, 0),
-                new THREE.Vector3(10, 0, 0)
-            ]),
-            100, // tubular segments
-            0.5, // radius
-            8,   // radial segments
-            false // closed
-        );
-        
-        const material = new THREE.MeshPhongMaterial({
-            color: 0x3a5f8a,
-            shininess: 100,
-            specular: 0x555555,
-            side: THREE.DoubleSide
-        });
-        
-        const pipe = new THREE.Mesh(geometry, material);
-        scene.add(pipe);
-
-        // Add lighting
-        const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
-        scene.add(ambientLight);
-        
-        const pointLight = new THREE.PointLight(0xffffff, 1);
-        pointLight.position.set(10, 10, 10);
-        scene.add(pointLight);
-
-        camera.position.z = 15;
-
-        // Animation
-        function animate() {
-            requestAnimationFrame(animate);
-            pipe.rotation.y += 0.01;
-            pipe.rotation.x += 0.005;
-            renderer.render(scene, camera);
+        if (window.innerWidth > 800) {
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
         }
-        
-        animate();
 
-        // Handle window resize
-        window.addEventListener('resize', () => {
+        window.addEventListener('resize', onWindowResize, false);
+        function onWindowResize() {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-        });
+        }
+
+        var camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 1, 500);
+        camera.position.set(0, 2, 14);
+
+        var scene = new THREE.Scene();
+        var city = new THREE.Object3D();
+        var smoke = new THREE.Object3D();
+        var town = new THREE.Object3D();
+
+        var createCarPos = true;
+        var uSpeed = 0.001;
+
+        var setcolor = 0xF02050;
+        scene.background = new THREE.Color(setcolor);
+        scene.fog = new THREE.Fog(setcolor, 10, 16);
+
+        function mathRandom(num = 8) {
+            return -Math.random() * num + Math.random() * num;
+        }
+
+        var setTintNum = true;
+        function setTintColor() {
+            return setTintNum ? (setTintNum = false, 0x000000) : (setTintNum = true, 0x000000);
+        }
+
+        function init() {
+            var segments = 2;
+            for (var i = 1; i < 100; i++) {
+                var geometry = new THREE.BoxGeometry(1, 1, 1, segments, segments, segments);
+                var material = new THREE.MeshStandardMaterial({
+                    color: setTintColor(),
+                    wireframe: false,
+                    flatShading: true,
+                    side: THREE.DoubleSide
+                });
+                var wmaterial = new THREE.MeshLambertMaterial({
+                    color: 0xFFFFFF,
+                    wireframe: true,
+                    transparent: true,
+                    opacity: 0.03,
+                    side: THREE.DoubleSide
+                });
+
+                var cube = new THREE.Mesh(geometry, material);
+                var wire = new THREE.Mesh(geometry, wmaterial);
+                cube.add(wire);
+
+                var floorGeometry = new THREE.BoxGeometry(1, 0.05, 1, segments, segments, segments);
+                var floor = new THREE.Mesh(floorGeometry, material);
+                var wfloor = new THREE.Mesh(floorGeometry, wmaterial);
+                floor.add(wfloor);
+
+                cube.castShadow = true;
+                cube.receiveShadow = true;
+                floor.castShadow = true;
+                floor.receiveShadow = true;
+
+                cube.rotationValue = 0.1 + Math.abs(mathRandom(8));
+                var buildingHeight = 0.1 + Math.abs(mathRandom(8));
+                cube.scale.y = buildingHeight;
+
+                var cubeWidth = 0.9;
+                cube.scale.x = cube.scale.z = cubeWidth + mathRandom(1 - cubeWidth);
+
+                cube.position.y = buildingHeight / 2;
+                cube.position.x = Math.round(mathRandom(10));
+                cube.position.z = Math.round(mathRandom(10));
+
+                floor.position.set(cube.position.x, 0, cube.position.z);
+
+                town.add(floor);
+                town.add(cube);
+            }
+
+            var gmaterial = new THREE.MeshToonMaterial({color: 0xFFFF00, side: THREE.DoubleSide});
+            var gparticular = new THREE.CircleGeometry(0.01, 3);
+            var aparticular = 5;
+
+            for (var h = 1; h < 300; h++) {
+                var particular = new THREE.Mesh(gparticular, gmaterial);
+                particular.position.set(mathRandom(aparticular), mathRandom(aparticular), mathRandom(aparticular));
+                particular.rotation.set(mathRandom(), mathRandom(), mathRandom());
+                smoke.add(particular);
+            }
+
+            var pmaterial = new THREE.MeshPhongMaterial({
+                color: 0x000000,
+                side: THREE.DoubleSide,
+                roughness: 10,
+                metalness: 0.6,
+                opacity: 0.9,
+                transparent: true
+            });
+            var pgeometry = new THREE.PlaneGeometry(60, 60);
+            var pelement = new THREE.Mesh(pgeometry, pmaterial);
+            pelement.rotation.x = -90 * Math.PI / 180;
+            pelement.position.y = -0.001;
+            pelement.receiveShadow = true;
+
+            city.add(pelement);
+        }
+
+        var raycaster = new THREE.Raycaster();
+        var mouse = new THREE.Vector2();
+
+        function onMouseMove(event) {
+            event.preventDefault();
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        }
+
+        window.addEventListener('mousemove', onMouseMove, false);
+
+        var ambientLight = new THREE.AmbientLight(0xFFFFFF, 4);
+        var lightFront = new THREE.SpotLight(0xFFFFFF, 20, 10);
+        var lightBack = new THREE.PointLight(0xFFFFFF, 0.5);
+
+        lightFront.rotation.x = 45 * Math.PI / 180;
+        lightFront.rotation.z = -45 * Math.PI / 180;
+        lightFront.position.set(5, 5, 5);
+        lightFront.castShadow = true;
+        lightFront.shadow.mapSize.width = 6000;
+        lightFront.shadow.mapSize.height = lightFront.shadow.mapSize.width;
+        lightFront.penumbra = 0.1;
+        lightBack.position.set(0, 6, 0);
+
+        smoke.position.y = 2;
+
+        scene.add(ambientLight);
+        city.add(lightFront);
+        scene.add(lightBack);
+        scene.add(city);
+        city.add(smoke);
+        city.add(town);
+
+        var gridHelper = new THREE.GridHelper(60, 120, 0xFF0000, 0x000000);
+        city.add(gridHelper);
+
+        var createCars = function(cScale = 2, cPos = 20, cColor = 0xFFFF00) {
+            var cMat = new THREE.MeshToonMaterial({color: cColor, side: THREE.DoubleSide});
+            var cGeo = new THREE.BoxGeometry(1, cScale/40, cScale/40);
+            var cElem = new THREE.Mesh(cGeo, cMat);
+            var cAmp = 3;
+
+            if (createCarPos) {
+                createCarPos = false;
+                cElem.position.x = -cPos;
+                cElem.position.z = (mathRandom(cAmp));
+                gsap.to(cElem.position, {x: cPos, duration: 3, repeat: -1, yoyo: true, delay: mathRandom(3)});
+            } else {
+                createCarPos = true;
+                cElem.position.x = (mathRandom(cAmp));
+                cElem.position.z = -cPos;
+                cElem.rotation.y = 90 * Math.PI / 180;
+                gsap.to(cElem.position, {z: cPos, duration: 5, repeat: -1, yoyo: true, delay: mathRandom(3), ease: "power1.inOut"});
+            }
+            cElem.receiveShadow = true;
+            cElem.castShadow = true;
+            cElem.position.y = Math.abs(mathRandom(5));
+            city.add(cElem);
+        }
+
+        var generateLines = function() {
+            for (var i = 0; i < 60; i++) {
+                createCars(0.1, 20);
+            }
+        }
+
+        window.cameraSet = function() {
+            createCars(0.1, 20, 0xFFFFFF);
+        }
+
+        var animate = function() {
+            var time = Date.now() * 0.00005;
+            requestAnimationFrame(animate);
+
+            city.rotation.y -= ((mouse.x * 8) - camera.rotation.y) * uSpeed;
+            city.rotation.x -= (-(mouse.y * 2) - camera.rotation.x) * uSpeed;
+            if (city.rotation.x < -0.05) city.rotation.x = -0.05;
+            else if (city.rotation.x > 1) city.rotation.x = 1;
+
+            smoke.rotation.y += 0.01;
+            smoke.rotation.x += 0.01;
+
+            camera.lookAt(city.position);
+            renderer.render(scene, camera);
+        }
+
+        generateLines();
+        init();
+        animate();
     </script>
 </body>
 </html>
