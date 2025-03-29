@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Plumbing Services | Your Plumbing Specialist in Cologne</title>
+    <title>Premium Plumbing Services | Apex Plumbing Experts in the USA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         /* Reset and base styles */
         * {
@@ -13,8 +16,21 @@
             font-family: 'Inter', 'Segoe UI', sans-serif;
         }
         
+        :root {
+            --primary: #dc3545;
+            --primary-hover: #ff4555;
+            --dark: #1a1a1a;
+            --darker: #000000;
+            --light-text: rgba(255, 255, 255, 0.7);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
-            background-color: #000000;
+            background-color: var(--darker);
             color: white;
             line-height: 1.6;
             overflow-x: hidden;
@@ -27,18 +43,18 @@
         }
         
         ::-webkit-scrollbar-track {
-            background: #1a1a1a;
+            background: var(--dark);
         }
         
         ::-webkit-scrollbar-thumb {
-            background: #dc3545;
+            background: var(--primary);
             border-radius: 6px;
-            border: 2px solid #1a1a1a;
+            border: 2px solid var(--dark);
         }
         
         /* Header */
         header {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
@@ -48,7 +64,14 @@
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 1rem 5%;
+            background: rgba(0, 0, 0, 0.95);
         }
         
         .logo {
@@ -57,6 +80,8 @@
             font-weight: 800;
             letter-spacing: 2px;
             text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1001;
         }
         
         nav {
@@ -68,6 +93,7 @@
             display: flex;
             list-style: none;
             margin: 0;
+            transition: var(--transition);
         }
         
         nav ul li {
@@ -81,26 +107,57 @@
             text-transform: uppercase;
             padding: 0.7rem 1rem;
             border-radius: 10px;
-            transition: all 0.4s ease;
+            transition: var(--transition);
             font-weight: 600;
         }
         
         nav ul li a:hover {
-            background-color: #dc3545;
+            background-color: var(--primary);
             transform: scale(1.05);
         }
         
         .contact-btn {
-            background: #dc3545;
+            background: var(--primary);
+            color: white !important;
+        }
+        
+        .contact-btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(220, 53, 69, 0.3);
         }
         
         .hamburger {
             display: none;
-            font-size: 2rem;
             background: none;
             border: none;
             color: white;
             cursor: pointer;
+            z-index: 1001;
+            width: 40px;
+            height: 40px;
+            position: relative;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 6px auto;
+            transition: var(--transition);
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
         }
         
         /* Hero section */
@@ -151,50 +208,75 @@
         }
         
         .hero-content {
-            max-width: 700px;
+            max-width: 800px;
             padding: 0 5%;
             margin: 0 auto;
             color: white;
             position: relative;
             z-index: 2;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .hero h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 900;
             margin-bottom: 2rem;
             text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
         }
         
         .hero p {
             font-size: 1.4rem;
             margin-bottom: 3rem;
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--light-text);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .btn {
-            background: #dc3545;
+            background: var(--primary);
             color: white;
             padding: 1.2rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            transition: all 0.4s ease;
+            transition: var(--transition);
             font-size: 1rem;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
             display: inline-block;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: none;
+            cursor: pointer;
         }
         
         .btn:hover {
-            background: #ff4555;
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
         
         /* Services section */
         .services {
             padding: 10rem 5% 6rem;
-            background: #1a1a1a;
+            background: var(--dark);
+            position: relative;
         }
         
         .section-title {
@@ -204,13 +286,13 @@
         
         .section-title h2 {
             font-size: 3rem;
-            color: #dc3545;
+            color: var(--primary);
             margin-bottom: 1.5rem;
             font-weight: 900;
         }
         
         .section-title p {
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--light-text);
             max-width: 700px;
             margin: 0 auto;
             font-size: 1.2rem;
@@ -227,7 +309,10 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            transition: all 0.5s ease;
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
         .service-card:hover {
@@ -239,29 +324,38 @@
             width: 100%;
             height: 280px;
             object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover img {
+            transform: scale(1.05);
         }
         
         .service-content {
             padding: 2.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .service-content h3 {
-            color: #dc3545;
+            color: var(--primary);
             margin-bottom: 1.2rem;
             font-size: 1.8rem;
             font-weight: 800;
         }
         
         .service-content p {
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--light-text);
             margin-bottom: 2rem;
             font-size: 1.1rem;
+            flex-grow: 1;
         }
         
         /* About section */
         .about {
             padding: 10rem 5% 6rem;
-            background: #000000;
+            background: var(--darker);
             display: flex;
             flex-wrap: wrap;
             align-items: center;
@@ -279,6 +373,11 @@
         .about-image img {
             width: 100%;
             border-radius: 20px;
+            transition: var(--transition);
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.03);
         }
         
         .about-content {
@@ -287,7 +386,7 @@
         }
         
         .about-content h2 {
-            color: #dc3545;
+            color: var(--primary);
             font-size: 3rem;
             margin-bottom: 2rem;
             font-weight: 900;
@@ -295,16 +394,16 @@
         
         .about-content p {
             margin-bottom: 2rem;
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--light-text);
             font-size: 1.2rem;
         }
         
         /* Footer */
         footer {
-            background: #1a1a1a;
+            background: var(--dark);
             color: white;
             padding: 4rem 5%;
-            text-align: center;
+            position: relative;
         }
         
         .footer-content {
@@ -328,7 +427,7 @@
             margin-bottom: 2rem;
             font-size: 1.5rem;
             font-weight: 700;
-            color: #dc3545;
+            color: var(--primary);
         }
         
         .footer-links {
@@ -340,27 +439,69 @@
         }
         
         .footer-links a {
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--light-text);
             text-decoration: none;
-            transition: all 0.4s ease;
+            transition: var(--transition);
             font-size: 1.1rem;
         }
         
         .footer-links a:hover {
-            color: #dc3545;
+            color: var(--primary);
         }
         
         .footer-bottom {
             padding-top: 3rem;
             border-top: 1px solid rgba(255, 255, 255, 0.15);
+            text-align: center;
         }
         
         .copyright {
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--light-text);
             font-size: 1rem;
         }
         
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 99;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--primary-hover);
+            transform: translateY(-5px);
+        }
+        
         /* Media Queries */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.8rem;
+            }
+        }
+        
         @media (max-width: 1024px) {
             .hero h1 {
                 font-size: 3.5rem;
@@ -378,12 +519,15 @@
             .service-card img {
                 height: 240px;
             }
+            
+            .about {
+                gap: 3rem;
+            }
         }
         
         @media (max-width: 768px) {
             header {
                 padding: 1rem 3%;
-                flex-wrap: wrap;
             }
             
             .logo {
@@ -395,22 +539,26 @@
             }
             
             nav ul {
-                display: none;
+                display: flex;
                 flex-direction: column;
                 width: 100%;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                background: rgba(0, 0, 0, 0.9);
-                padding: 1rem 0;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                background: rgba(0, 0, 0, 0.95);
+                height: 100vh;
+                padding: 80px 0;
+                z-index: 1000;
+                align-items: center;
+                justify-content: flex-start;
             }
             
             nav ul.active {
-                display: flex;
+                right: 0;
             }
             
             nav ul li {
-                margin: 0.5rem 0;
+                margin: 1.5rem 0;
                 width: 100%;
                 text-align: center;
             }
@@ -418,6 +566,7 @@
             nav ul li a {
                 display: block;
                 padding: 1rem;
+                font-size: 1.2rem;
             }
             
             .hero {
@@ -464,11 +613,18 @@
                 flex-direction: column;
                 text-align: center;
             }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
         }
         
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .hero p {
@@ -478,6 +634,13 @@
             .btn {
                 padding: 0.8rem 1.5rem;
                 font-size: 0.8rem;
+                display: block;
+                margin: 0 auto 1rem;
+                max-width: 200px;
+            }
+            
+            .btn-outline {
+                margin-left: auto;
             }
             
             .section-title h2 {
@@ -528,11 +691,15 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="logo">BERB</div>
+    <header id="header">
+        <div class="logo">Apex Plumbing Experts</div>
         <nav>
-            <button class="hamburger">☰</button>
-            <ul>
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul id="nav-menu">
                 <li><a href="#services">Sanitary</a></li>
                 <li><a href="#heating">Heating</a></li>
                 <li><a href="#about">About</a></li>
@@ -544,49 +711,49 @@
     </header>
     
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="home">
         <canvas id="three-js-canvas"></canvas>
         <div class="hero-image-container">
-            <img src="" alt="Modern kitchen sink design">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Modern plumbing design">
         </div>
         <div class="overlay"></div>
         <div class="hero-content">
-            <h1>YOUR PLUMBING SPECIALIST IN COLOGNE</h1>
-            <p>We are a certified company delivering cutting-edge plumbing solutions with 3D technology for you & your company.</p>
+            <h1>YOUR PLUMBING SPECIALIST IN THE USA</h1>
+            <p>We are a certified company delivering reliable and high-quality plumbing solutions for homes and businesses.</p>
             <a href="#contact" class="btn">Contact</a>
-            <a href="#services" class="btn" style="margin-left: 15px; background: transparent; border: 2px solid white;">Learn More</a>
+            <a href="#services" class="btn btn-outline">Learn More</a>
         </div>
     </section>
     
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="section-title">
-            <h2>Our Premium 3D Plumbing Services</h2>
-            <p>Experience state-of-the-art plumbing solutions with advanced 3D design technology for residential and commercial properties in Cologne.</p>
+            <h2>Our Premium Plumbing Services</h2>
+            <p>Experience friendly and professional plumbing solutions for residential and commercial properties across the USA.</p>
         </div>
         <div class="services-grid">
             <div class="service-card">
                 <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Modern bathroom installation">
                 <div class="service-content">
-                    <h3>3D Bathroom Installation</h3>
-                    <p>Transform your space with our innovative 3D bathroom design and installation services, from virtual planning to flawless execution.</p>
-                    <a href="#contact" class="btn">Get 3D Quote</a>
+                    <h3>Bathroom Installation</h3>
+                    <p>Transform your space with our expert bathroom design and installation services, tailored to your needs.</p>
+                    <a href="#contact" class="btn">Get a Quote</a>
                 </div>
             </div>
-            <div class="service-card">
+            <div class="service-card" id="heating">
                 <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Advanced heating systems">
                 <div class="service-content">
-                    <h3>3D Heating Solutions</h3>
-                    <p>Advanced heating system design and installation using 3D modeling for maximum efficiency and performance.</p>
-                    <a href="#contact" class="btn">Get 3D Quote</a>
+                    <h3>Heating Solutions</h3>
+                    <p>Efficient heating system design and installation for maximum comfort and performance.</p>
+                    <a href="#contact" class="btn">Get a Quote</a>
                 </div>
             </div>
             <div class="service-card">
                 <img src="https://parametric-architecture.com/wp-content/uploads/2024/07/Kitchen-Sink-3.webp" alt="Emergency plumbing service">
                 <div class="service-content">
-                    <h3>3D Emergency Plumbing</h3>
-                    <p>Rapid response plumbing with 3D diagnostic technology for precise, efficient solutions to urgent issues.</p>
-                    <a href="#contact" class="btn">Get 3D Quote</a>
+                    <h3>Emergency Plumbing</h3>
+                    <p>Rapid response plumbing services for precise and efficient solutions to urgent issues.</p>
+                    <a href="#contact" class="btn">Get a Quote</a>
                 </div>
             </div>
         </div>
@@ -599,75 +766,122 @@
         </div>
         <div class="about-content">
             <h2>About Us</h2>
-            <p>With over 15 years of expertise, we lead the way in innovative plumbing solutions using advanced 3D technology. Our certified Cologne-based team is committed to excellence in every project.</p>
-            <p>Blending traditional craftsmanship with modern 3D design, we deliver precision and satisfaction for both residential and commercial clients.</p>
+            <p>Welcome to Apex Plumbing Experts, your trusted licensed and insured plumbing company. We take pride in delivering reliable, affordable, and high-quality plumbing services for homes and businesses.</p>
+            <p>Our experienced plumbers are here to help with leak repairs, drain cleaning, water heater installations, pipe replacements, and emergency plumbing services. No job is too big or small—we’re committed to providing fast, efficient, and long-lasting solutions.</p>
+            <p>At Apex Plumbing Experts, customer satisfaction is our top priority. We offer honest pricing, expert workmanship, and friendly service. Whether you need a plumbing repair, installation, or maintenance, you can count on us to get the job done right.</p>
+            <a href="#contact" class="btn">Contact Our Team</a>
         </div>
     </section>
     
     <!-- Footer -->
-    <footer>
+    <footer id="contact">
         <div class="footer-content">
             <div class="footer-col">
-                <h3>BERB Plumbing</h3>
-                <p>Your trusted plumbing specialist in Cologne since 2008.</p>
+                <h3>Apex Plumbing Experts</h3>
+                <p>Your trusted plumbing specialist in the USA since 2008.</p>
+                <p style="margin-top: 20px;">Serving the USA</p>
             </div>
             <div class="footer-col">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#heating">Heating</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h3>Contact</h3>
-                <p>Email: info@berbplumbing.de</p>
-                <p>Phone: +49 221 123 4567</p>
-                <p>Cologne, Germany</p>
+                <p>Email: mark_gaw@outlook.com</p>
+                <p>Phone: 416-800-2992</p>
+                <p>Follow us: <a href="https://www.facebook.com/profile.php?id=61574768392893" target="_blank" style="color: var(--primary);">Facebook</a></p>
+                <p>Hours: Mon-Fri 8:00 - 18:00</p>
+                <div style="margin-top: 20px;">
+                    <a href="#contact" class="btn">Request a Quote</a>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p class="copyright">© 2025 BERB Plumbing. All rights reserved.</p>
+            <p class="copyright">© 2025 Apex Plumbing Experts. All rights reserved.</p>
         </div>
     </footer>
 
+    <a href="#home" class="back-to-top" id="back-to-top" aria-label="Back to top">↑</a>
+
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script>
         // Hamburger menu toggle
-        document.querySelector('.hamburger').addEventListener('click', () => {
-            document.querySelector('nav ul').classList.toggle('active');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const header = document.getElementById('header');
+        const backToTop = document.getElementById('back-to-top');
+        const navLinks = document.querySelectorAll('nav ul li a');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
         });
 
-        // Three JS City Animation
-        var renderer = new THREE.WebGLRenderer({antialias: true, canvas: document.getElementById('three-js-canvas')});
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        // Close menu when clicking on a nav link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+        });
 
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+                backToTop.classList.add('visible');
+            } else {
+                header.classList.remove('scrolled');
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Enhanced Three.js Animation with original color
+        const renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            canvas: document.getElementById('three-js-canvas'),
+            alpha: true
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        // Enable shadows for better quality
         if (window.innerWidth > 800) {
             renderer.shadowMap.enabled = true;
             renderer.shadowMap.type = THREE.PCFSoftShadowMap;
         }
 
+        // Handle window resize properly
         window.addEventListener('resize', onWindowResize, false);
         function onWindowResize() {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         }
 
-        var camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 1, 500);
+        const camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 1, 500);
         camera.position.set(0, 2, 14);
 
-        var scene = new THREE.Scene();
-        var city = new THREE.Object3D();
-        var smoke = new THREE.Object3D();
-        var town = new THREE.Object3D();
+        const scene = new THREE.Scene();
+        const city = new THREE.Object3D();
+        const smoke = new THREE.Object3D();
+        const town = new THREE.Object3D();
 
-        var createCarPos = true;
-        var uSpeed = 0.001;
+        let createCarPos = true;
+        const uSpeed = 0.001;
 
-        var setcolor = 0xF02050;
+        // Keep the original color
+        const setcolor = 0xF02050;
         scene.background = new THREE.Color(setcolor);
         scene.fog = new THREE.Fog(setcolor, 10, 16);
 
@@ -675,22 +889,22 @@
             return -Math.random() * num + Math.random() * num;
         }
 
-        var setTintNum = true;
+        let setTintNum = true;
         function setTintColor() {
             return setTintNum ? (setTintNum = false, 0x000000) : (setTintNum = true, 0x000000);
         }
 
         function init() {
-            var segments = 2;
-            for (var i = 1; i < 100; i++) {
-                var geometry = new THREE.BoxGeometry(1, 1, 1, segments, segments, segments);
-                var material = new THREE.MeshStandardMaterial({
+            const segments = 2;
+            for (let i = 1; i < 100; i++) {
+                const geometry = new THREE.BoxGeometry(1, 1, 1, segments, segments, segments);
+                const material = new THREE.MeshStandardMaterial({
                     color: setTintColor(),
                     wireframe: false,
                     flatShading: true,
                     side: THREE.DoubleSide
                 });
-                var wmaterial = new THREE.MeshLambertMaterial({
+                const wmaterial = new THREE.MeshLambertMaterial({
                     color: 0xFFFFFF,
                     wireframe: true,
                     transparent: true,
@@ -698,13 +912,13 @@
                     side: THREE.DoubleSide
                 });
 
-                var cube = new THREE.Mesh(geometry, material);
-                var wire = new THREE.Mesh(geometry, wmaterial);
+                const cube = new THREE.Mesh(geometry, material);
+                const wire = new THREE.Mesh(geometry, wmaterial);
                 cube.add(wire);
 
-                var floorGeometry = new THREE.BoxGeometry(1, 0.05, 1, segments, segments, segments);
-                var floor = new THREE.Mesh(floorGeometry, material);
-                var wfloor = new THREE.Mesh(floorGeometry, wmaterial);
+                const floorGeometry = new THREE.BoxGeometry(1, 0.05, 1, segments, segments, segments);
+                const floor = new THREE.Mesh(floorGeometry, material);
+                const wfloor = new THREE.Mesh(floorGeometry, wmaterial);
                 floor.add(wfloor);
 
                 cube.castShadow = true;
@@ -713,10 +927,10 @@
                 floor.receiveShadow = true;
 
                 cube.rotationValue = 0.1 + Math.abs(mathRandom(8));
-                var buildingHeight = 0.1 + Math.abs(mathRandom(8));
+                const buildingHeight = 0.1 + Math.abs(mathRandom(8));
                 cube.scale.y = buildingHeight;
 
-                var cubeWidth = 0.9;
+                const cubeWidth = 0.9;
                 cube.scale.x = cube.scale.z = cubeWidth + mathRandom(1 - cubeWidth);
 
                 cube.position.y = buildingHeight / 2;
@@ -729,18 +943,20 @@
                 town.add(cube);
             }
 
-            var gmaterial = new THREE.MeshToonMaterial({color: 0xFFFF00, side: THREE.DoubleSide});
-            var gparticular = new THREE.CircleGeometry(0.01, 3);
-            var aparticular = 5;
+            // Add particles for atmosphere
+            const gmaterial = new THREE.MeshToonMaterial({color: 0xFFFF00, side: THREE.DoubleSide});
+            const gparticular = new THREE.CircleGeometry(0.01, 3);
+            const aparticular = 5;
 
-            for (var h = 1; h < 300; h++) {
-                var particular = new THREE.Mesh(gparticular, gmaterial);
+            for (let h = 1; h < 300; h++) {
+                const particular = new THREE.Mesh(gparticular, gmaterial);
                 particular.position.set(mathRandom(aparticular), mathRandom(aparticular), mathRandom(aparticular));
                 particular.rotation.set(mathRandom(), mathRandom(), mathRandom());
                 smoke.add(particular);
             }
 
-            var pmaterial = new THREE.MeshPhongMaterial({
+            // Add ground plane
+            const pmaterial = new THREE.MeshPhongMaterial({
                 color: 0x000000,
                 side: THREE.DoubleSide,
                 roughness: 10,
@@ -748,8 +964,8 @@
                 opacity: 0.9,
                 transparent: true
             });
-            var pgeometry = new THREE.PlaneGeometry(60, 60);
-            var pelement = new THREE.Mesh(pgeometry, pmaterial);
+            const pgeometry = new THREE.PlaneGeometry(60, 60);
+            const pelement = new THREE.Mesh(pgeometry, pmaterial);
             pelement.rotation.x = -90 * Math.PI / 180;
             pelement.position.y = -0.001;
             pelement.receiveShadow = true;
@@ -757,8 +973,8 @@
             city.add(pelement);
         }
 
-        var raycaster = new THREE.Raycaster();
-        var mouse = new THREE.Vector2();
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
 
         function onMouseMove(event) {
             event.preventDefault();
@@ -768,9 +984,10 @@
 
         window.addEventListener('mousemove', onMouseMove, false);
 
-        var ambientLight = new THREE.AmbientLight(0xFFFFFF, 4);
-        var lightFront = new THREE.SpotLight(0xFFFFFF, 20, 10);
-        var lightBack = new THREE.PointLight(0xFFFFFF, 0.5);
+        // Improved lighting for better visual appeal
+        const ambientLight = new THREE.AmbientLight(0xFFFFFF, 4);
+        const lightFront = new THREE.SpotLight(0xFFFFFF, 20, 10);
+        const lightBack = new THREE.PointLight(0xFFFFFF, 0.5);
 
         lightFront.rotation.x = 45 * Math.PI / 180;
         lightFront.rotation.z = -45 * Math.PI / 180;
@@ -790,26 +1007,69 @@
         city.add(smoke);
         city.add(town);
 
-        var gridHelper = new THREE.GridHelper(60, 120, 0xFF0000, 0x000000);
+        // Add grid for better depth perception
+        const gridHelper = new THREE.GridHelper(60, 120, 0xFF0000, 0x000000);
         city.add(gridHelper);
 
-        var createCars = function(cScale = 2, cPos = 20, cColor = 0xFFFF00) {
-            var cMat = new THREE.MeshToonMaterial({color: cColor, side: THREE.DoubleSide});
-            var cGeo = new THREE.BoxGeometry(1, cScale/40, cScale/40);
-            var cElem = new THREE.Mesh(cGeo, cMat);
-            var cAmp = 3;
+        // Create animated cars
+        const createCars = function(cScale = 2, cPos = 20, cColor = 0xFFFF00) {
+            const cMat = new THREE.MeshToonMaterial({color: cColor, side: THREE.DoubleSide});
+            const cGeo = new THREE.BoxGeometry(1, cScale/40, cScale/40);
+            const cElem = new THREE.Mesh(cGeo, cMat);
+            const cAmp = 3;
 
             if (createCarPos) {
                 createCarPos = false;
                 cElem.position.x = -cPos;
                 cElem.position.z = (mathRandom(cAmp));
-                gsap.to(cElem.position, {x: cPos, duration: 3, repeat: -1, yoyo: true, delay: mathRandom(3)});
+                
+                // Use GSAP-like animation with requestAnimationFrame
+                let startTime = null;
+                const duration = 3000 * (1 + Math.random());
+                const animate = function(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    const elapsed = timestamp - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // Sine wave movement for smooth back and forth
+                    const position = -cPos + (2 * cPos * (0.5 - 0.5 * Math.cos(progress * Math.PI)));
+                    cElem.position.x = position;
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        startTime = null;
+                        requestAnimationFrame(animate);
+                    }
+                };
+                requestAnimationFrame(animate);
             } else {
                 createCarPos = true;
                 cElem.position.x = (mathRandom(cAmp));
                 cElem.position.z = -cPos;
                 cElem.rotation.y = 90 * Math.PI / 180;
-                gsap.to(cElem.position, {z: cPos, duration: 5, repeat: -1, yoyo: true, delay: mathRandom(3), ease: "power1.inOut"});
+                
+                // Use GSAP-like animation with requestAnimationFrame
+                let startTime = null;
+                const duration = 5000 * (1 + Math.random());
+                const animate = function(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    const elapsed = timestamp - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // Ease in-out for smooth movement
+                    const easeInOut = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+                    const position = -cPos + (2 * cPos * easeInOut);
+                    cElem.position.z = position;
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        startTime = null;
+                        requestAnimationFrame(animate);
+                    }
+                };
+                requestAnimationFrame(animate);
             }
             cElem.receiveShadow = true;
             cElem.castShadow = true;
@@ -817,25 +1077,33 @@
             city.add(cElem);
         }
 
-        var generateLines = function() {
-            for (var i = 0; i < 60; i++) {
+        const generateLines = function() {
+            for (let i = 0; i < 60; i++) {
                 createCars(0.1, 20);
             }
         }
 
+        // Add more cars with white color for contrast
         window.cameraSet = function() {
             createCars(0.1, 20, 0xFFFFFF);
         }
 
-        var animate = function() {
-            var time = Date.now() * 0.00005;
+        // Improved animation loop with smoother camera movement
+        const animate = function() {
             requestAnimationFrame(animate);
 
-            city.rotation.y -= ((mouse.x * 8) - camera.rotation.y) * uSpeed;
-            city.rotation.x -= (-(mouse.y * 2) - camera.rotation.x) * uSpeed;
+            // Smoother camera movement with damping
+            const targetRotationY = (mouse.x * 8);
+            const targetRotationX = -(mouse.y * 2);
+            
+            city.rotation.y += (targetRotationY - city.rotation.y) * uSpeed;
+            city.rotation.x += (targetRotationX - city.rotation.x) * uSpeed;
+            
+            // Limit rotation to prevent extreme angles
             if (city.rotation.x < -0.05) city.rotation.x = -0.05;
             else if (city.rotation.x > 1) city.rotation.x = 1;
 
+            // Animate smoke particles
             smoke.rotation.y += 0.01;
             smoke.rotation.x += 0.01;
 
@@ -843,9 +1111,33 @@
             renderer.render(scene, camera);
         }
 
+        // Generate city and start animation
         generateLines();
         init();
         animate();
+        
+        // Add some white cars for contrast after a delay
+        setTimeout(() => {
+            for (let i = 0; i < 10; i++) {
+                createCars(0.1, 20, 0xFFFFFF);
+            }
+        }, 3000);
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
