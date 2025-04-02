@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Plumbing Services | Apex Plumbing Experts in the USA</title>
+    <title>Premium Plumbing Services | The Veterans Expert Plumbing Repairers</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -692,7 +692,7 @@
 <body>
     <!-- Header -->
     <header id="header">
-        <div class="logo">Apex Plumbing Experts</div>
+        <div class="logo">The Veterans Expert Plumbing Repairers</div>
         <nav>
             <button class="hamburger" aria-label="Toggle menu">
                 <span></span>
@@ -705,6 +705,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#references">References</a></li>
                 <li><a href="#team">Team</a></li>
+                <li><a href="#copyright">Copyright</a></li>
                 <li><a href="#contact" class="contact-btn">Contact</a></li>
             </ul>
         </nav>
@@ -718,7 +719,7 @@
         </div>
         <div class="overlay"></div>
         <div class="hero-content">
-            <h1>YOUR PLUMBING SPECIALIST IN THE USA</h1>
+            <h1>YOUR PLUMBING SPECIALIST </h1>
             <p>We are a certified company delivering reliable and high-quality plumbing solutions for homes and businesses.</p>
             <a href="#contact" class="btn">Contact</a>
             <a href="#services" class="btn btn-outline">Learn More</a>
@@ -729,7 +730,7 @@
     <section class="services" id="services">
         <div class="section-title">
             <h2>Our Premium Plumbing Services</h2>
-            <p>Experience friendly and professional plumbing solutions for residential and commercial properties across the USA.</p>
+            <p>Experience friendly and professional plumbing solutions for residential and commercial properties</p>
         </div>
         <div class="services-grid">
             <div class="service-card">
@@ -762,13 +763,11 @@
     <!-- About Section -->
     <section class="about" id="about">
         <div class="about-image">
-            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Plumbing team">
+            <img src="" alt="Plumbing team">
         </div>
         <div class="about-content">
             <h2>About Us</h2>
-            <p>Welcome to Apex Plumbing Experts, your trusted licensed and insured plumbing company. We take pride in delivering reliable, affordable, and high-quality plumbing services for homes and businesses.</p>
-            <p>Our experienced plumbers are here to help with leak repairs, drain cleaning, water heater installations, pipe replacements, and emergency plumbing services. No job is too big or small—we’re committed to providing fast, efficient, and long-lasting solutions.</p>
-            <p>At Apex Plumbing Experts, customer satisfaction is our top priority. We offer honest pricing, expert workmanship, and friendly service. Whether you need a plumbing repair, installation, or maintenance, you can count on us to get the job done right.</p>
+            <p>Licensed master plumber with 7 years of experience. Providing top-notch plumbing services for residential and commercial properties. Our team is committed to providing honest, affordable, and efficient plumbing services to our clients.</p>
             <a href="#contact" class="btn">Contact Our Team</a>
         </div>
     </section>
@@ -777,9 +776,9 @@
     <footer id="contact">
         <div class="footer-content">
             <div class="footer-col">
-                <h3>Apex Plumbing Experts</h3>
-                <p>Your trusted plumbing specialist in the USA since 2008.</p>
-                <p style="margin-top: 20px;">Serving the USA</p>
+                <h3>The Veterans Expert Plumbing Repairers</h3>
+                <p>Your trusted plumbing specialist in  since 2018.</p>
+                <p style="margin-top: 20px;">available 24/7</p>
             </div>
             <div class="footer-col">
                 <h3>Quick Links</h3>
@@ -793,17 +792,19 @@
             </div>
             <div class="footer-col">
                 <h3>Contact</h3>
-                <p>Email: mark_gaw@outlook.com</p>
-                <p>Phone: 416-800-2992</p>
-                <p>Follow us: <a href="https://www.facebook.com/profile.php?id=61574768392893" target="_blank" style="color: var(--primary);">Facebook</a></p>
+                <p>Email: theveteransexpertplumbingrepai@gmail.com</p>
+                <p>Phone: +447788220710</p>
+                <p>Follow us: <a href="https://www.facebook.com/profile.php?id=61557677273791" target="_blank" style="color: var(--primary);">Reviews</a></p>
                 <p>Hours: Mon-Fri 8:00 - 18:00</p>
+                <p style="margin-top: 10px;">Dollard Bby: Broken shower head installed today and water pipe at affordable prices. Message us anytime, we're available.</p>
                 <div style="margin-top: 20px;">
                     <a href="#contact" class="btn">Request a Quote</a>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p class="copyright">© 2025 Apex Plumbing Experts. All rights reserved.</p>
+        <div class="footer-bottom" id="copyright">
+            <p class="copyright">© 2025 The Veterans Expert Plumbing Repairers. All rights reserved.</p>
+            <p class="copyright">Copyright (c) 2025 by Victor Vergara (<a href="https://codepen.io/vcomics/pen/aGmoae" target="_blank" style="color: var(--primary);">https://codepen.io/vcomics/pen/aGmoae</a>)</p>
         </div>
     </footer>
 
@@ -845,7 +846,7 @@
             }
         });
 
-        // Enhanced Three.js Animation with original color
+        // Enhanced Three.js Animation with original colors and brighter lighting
         const renderer = new THREE.WebGLRenderer({
             antialias: true,
             canvas: document.getElementById('three-js-canvas'),
@@ -880,10 +881,10 @@
         let createCarPos = true;
         const uSpeed = 0.001;
 
-        // Keep the original color
+        // Original color retained
         const setcolor = 0xF02050;
         scene.background = new THREE.Color(setcolor);
-        scene.fog = new THREE.Fog(setcolor, 10, 16);
+        scene.fog = new THREE.Fog(setcolor, 12, 20); // Adjusted fog distance for brightness
 
         function mathRandom(num = 8) {
             return -Math.random() * num + Math.random() * num;
@@ -891,7 +892,7 @@
 
         let setTintNum = true;
         function setTintColor() {
-            return setTintNum ? (setTintNum = false, 0x000000) : (setTintNum = true, 0x000000);
+            return setTintNum ? (setTintNum = false, 0x000000) : (setTintNum = true, 0x000000); // Original building tint
         }
 
         function init() {
@@ -955,7 +956,7 @@
                 smoke.add(particular);
             }
 
-            // Add ground plane
+            // Add ground plane with original color
             const pmaterial = new THREE.MeshPhongMaterial({
                 color: 0x000000,
                 side: THREE.DoubleSide,
@@ -984,10 +985,10 @@
 
         window.addEventListener('mousemove', onMouseMove, false);
 
-        // Improved lighting for better visual appeal
-        const ambientLight = new THREE.AmbientLight(0xFFFFFF, 4);
-        const lightFront = new THREE.SpotLight(0xFFFFFF, 20, 10);
-        const lightBack = new THREE.PointLight(0xFFFFFF, 0.5);
+        // Brighter lighting with original colors
+        const ambientLight = new THREE.AmbientLight(0xFFFFFF, 6); // Increased from 4 to 6
+        const lightFront = new THREE.SpotLight(0xFFFFFF, 25, 10); // Increased from 20 to 25
+        const lightBack = new THREE.PointLight(0xFFFFFF, 1); // Increased from 0.5 to 1
 
         lightFront.rotation.x = 45 * Math.PI / 180;
         lightFront.rotation.z = -45 * Math.PI / 180;
@@ -1007,7 +1008,7 @@
         city.add(smoke);
         city.add(town);
 
-        // Add grid for better depth perception
+        // Add grid with original colors
         const gridHelper = new THREE.GridHelper(60, 120, 0xFF0000, 0x000000);
         city.add(gridHelper);
 
@@ -1023,7 +1024,6 @@
                 cElem.position.x = -cPos;
                 cElem.position.z = (mathRandom(cAmp));
                 
-                // Use GSAP-like animation with requestAnimationFrame
                 let startTime = null;
                 const duration = 3000 * (1 + Math.random());
                 const animate = function(timestamp) {
@@ -1031,7 +1031,6 @@
                     const elapsed = timestamp - startTime;
                     const progress = Math.min(elapsed / duration, 1);
                     
-                    // Sine wave movement for smooth back and forth
                     const position = -cPos + (2 * cPos * (0.5 - 0.5 * Math.cos(progress * Math.PI)));
                     cElem.position.x = position;
                     
@@ -1049,7 +1048,6 @@
                 cElem.position.z = -cPos;
                 cElem.rotation.y = 90 * Math.PI / 180;
                 
-                // Use GSAP-like animation with requestAnimationFrame
                 let startTime = null;
                 const duration = 5000 * (1 + Math.random());
                 const animate = function(timestamp) {
@@ -1057,7 +1055,6 @@
                     const elapsed = timestamp - startTime;
                     const progress = Math.min(elapsed / duration, 1);
                     
-                    // Ease in-out for smooth movement
                     const easeInOut = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
                     const position = -cPos + (2 * cPos * easeInOut);
                     cElem.position.z = position;
@@ -1083,27 +1080,22 @@
             }
         }
 
-        // Add more cars with white color for contrast
         window.cameraSet = function() {
             createCars(0.1, 20, 0xFFFFFF);
         }
 
-        // Improved animation loop with smoother camera movement
         const animate = function() {
             requestAnimationFrame(animate);
 
-            // Smoother camera movement with damping
             const targetRotationY = (mouse.x * 8);
             const targetRotationX = -(mouse.y * 2);
             
             city.rotation.y += (targetRotationY - city.rotation.y) * uSpeed;
             city.rotation.x += (targetRotationX - city.rotation.x) * uSpeed;
             
-            // Limit rotation to prevent extreme angles
             if (city.rotation.x < -0.05) city.rotation.x = -0.05;
             else if (city.rotation.x > 1) city.rotation.x = 1;
 
-            // Animate smoke particles
             smoke.rotation.y += 0.01;
             smoke.rotation.x += 0.01;
 
@@ -1111,19 +1103,16 @@
             renderer.render(scene, camera);
         }
 
-        // Generate city and start animation
         generateLines();
         init();
         animate();
         
-        // Add some white cars for contrast after a delay
         setTimeout(() => {
             for (let i = 0; i < 10; i++) {
                 createCars(0.1, 20, 0xFFFFFF);
             }
         }, 3000);
         
-        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
