@@ -3,1129 +3,539 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Plumbing Services | The Veterans Expert Plumbing Repairers</title>
+    <title>LuxClean | Premium House Cleaning Solutions</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#8A7D4F',secondary:'#2C3E2D'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
     <style>
-        /* Reset and base styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', 'Segoe UI', sans-serif;
-        }
-        
-        :root {
-            --primary: #dc3545;
-            --primary-hover: #ff4555;
-            --dark: #1a1a1a;
-            --darker: #000000;
-            --light-text: rgba(255, 255, 255, 0.7);
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
+        :where([class^="ri-"])::before { content: "\f3c2"; }
         body {
-            background-color: var(--darker);
-            color: white;
-            line-height: 1.6;
-            overflow-x: hidden;
-            cursor: crosshair;
+            font-family: 'Poppins', sans-serif;
         }
-        
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 12px;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
         }
-        
-        ::-webkit-scrollbar-track {
-            background: var(--dark);
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://public.readdy.ai/ai/img_res/d3acfc9c59ea0b0333b32fcb53dfd592.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 6px;
-            border: 2px solid var(--dark);
-        }
-        
-        /* Header */
-        header {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
-            transition: var(--transition);
-        }
-        
-        header.scrolled {
-            padding: 1rem 5%;
-            background: rgba(0, 0, 0, 0.95);
-        }
-        
-        .logo {
-            color: white;
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            position: relative;
-            z-index: 1001;
-        }
-        
-        nav {
-            display: flex;
-            align-items: center;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            transition: var(--transition);
-        }
-        
-        nav ul li {
-            margin-left: 2rem;
-        }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 1rem;
-            text-transform: uppercase;
-            padding: 0.7rem 1rem;
-            border-radius: 10px;
-            transition: var(--transition);
-            font-weight: 600;
-        }
-        
-        nav ul li a:hover {
-            background-color: var(--primary);
-            transform: scale(1.05);
-        }
-        
-        .contact-btn {
-            background: var(--primary);
-            color: white !important;
-        }
-        
-        .contact-btn:hover {
-            background: var(--primary-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(220, 53, 69, 0.3);
-        }
-        
-        .hamburger {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            z-index: 1001;
-            width: 40px;
-            height: 40px;
-            position: relative;
-        }
-        
-        .hamburger span {
-            display: block;
-            width: 30px;
-            height: 3px;
-            background-color: white;
-            margin: 6px auto;
-            transition: var(--transition);
-        }
-        
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(7px, 7px);
-        }
-        
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-        
-        /* Hero section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
-            text-align: center;
-        }
-        
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.7;
-        }
-        
-        .hero-image-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-        }
-        
-        .hero-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.3);
-        }
-        
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: -1;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            padding: 0 5%;
-            margin: 0 auto;
-            color: white;
-            position: relative;
-            z-index: 2;
-            animation: fadeIn 1.5s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .hero h1 {
-            font-size: 4.5rem;
-            font-weight: 900;
-            margin-bottom: 2rem;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            line-height: 1.2;
-        }
-        
-        .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 3rem;
-            color: var(--light-text);
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .btn {
-            background: var(--primary);
-            color: white;
-            padding: 1.2rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: var(--transition);
-            font-size: 1rem;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-            display: inline-block;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid white;
-            margin-left: 15px;
-        }
-        
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Services section */
-        .services {
-            padding: 10rem 5% 6rem;
-            background: var(--dark);
-            position: relative;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-        
-        .section-title h2 {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            font-weight: 900;
-        }
-        
-        .section-title p {
-            color: var(--light-text);
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.2rem;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 3rem;
-        }
-        
-        .service-card {
-            background: #252525;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-        
-        .service-card img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        
-        .service-card:hover img {
-            transform: scale(1.05);
-        }
-        
-        .service-content {
-            padding: 2.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .service-content h3 {
-            color: var(--primary);
-            margin-bottom: 1.2rem;
-            font-size: 1.8rem;
-            font-weight: 800;
-        }
-        
-        .service-content p {
-            color: var(--light-text);
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-            flex-grow: 1;
-        }
-        
-        /* About section */
-        .about {
-            padding: 10rem 5% 6rem;
-            background: var(--darker);
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 4rem;
-        }
-        
-        .about-image {
-            flex: 1;
-            min-width: 320px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
-        }
-        
-        .about-image img {
-            width: 100%;
-            border-radius: 20px;
-            transition: var(--transition);
-        }
-        
-        .about-image:hover img {
-            transform: scale(1.03);
-        }
-        
-        .about-content {
-            flex: 1;
-            min-width: 320px;
-        }
-        
-        .about-content h2 {
-            color: var(--primary);
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            font-weight: 900;
-        }
-        
-        .about-content p {
-            margin-bottom: 2rem;
-            color: var(--light-text);
-            font-size: 1.2rem;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 4rem 5%;
+        .nav-link {
             position: relative;
         }
-        
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin-bottom: 3rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #8A7D4F;
+            transition: width 0.3s ease;
         }
-        
-        .footer-col {
-            flex: 1;
-            min-width: 220px;
-            margin-bottom: 2rem;
-            padding: 0 1.5rem;
+        .nav-link:hover::after {
+            width: 100%;
         }
-        
-        .footer-col h3 {
-            margin-bottom: 2rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
+        .project-card {
+            overflow: hidden;
         }
-        
-        .footer-links {
-            list-style: none;
+        .project-card img {
+            transition: transform 0.7s ease;
         }
-        
-        .footer-links li {
-            margin-bottom: 1rem;
+        .project-card:hover img {
+            transform: scale(1.05);
         }
-        
-        .footer-links a {
-            color: var(--light-text);
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 1.1rem;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-        
-        .footer-bottom {
-            padding-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            text-align: center;
-        }
-        
-        .copyright {
-            color: var(--light-text);
-            font-size: 1rem;
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            font-size: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: var(--transition);
+        .project-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
             opacity: 0;
-            visibility: hidden;
-            z-index: 99;
+            transition: opacity 0.3s ease;
         }
-        
-        .back-to-top.visible {
+        .project-card:hover .project-overlay {
             opacity: 1;
-            visibility: visible;
         }
-        
-        .back-to-top:hover {
-            background: var(--primary-hover);
-            transform: translateY(-5px);
-        }
-        
-        /* Media Queries */
-        @media (max-width: 1200px) {
-            .hero h1 {
-                font-size: 3.8rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.8rem;
-            }
-        }
-        
-        @media (max-width: 1024px) {
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.5rem;
-            }
-            
-            .services-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                gap: 2rem;
-            }
-            
-            .service-card img {
-                height: 240px;
-            }
-            
-            .about {
-                gap: 3rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            header {
-                padding: 1rem 3%;
-            }
-            
-            .logo {
-                font-size: 1.8rem;
-            }
-            
-            .hamburger {
-                display: block;
-            }
-            
-            nav ul {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                position: fixed;
-                top: 0;
-                right: -100%;
-                background: rgba(0, 0, 0, 0.95);
-                height: 100vh;
-                padding: 80px 0;
-                z-index: 1000;
-                align-items: center;
-                justify-content: flex-start;
-            }
-            
-            nav ul.active {
-                right: 0;
-            }
-            
-            nav ul li {
-                margin: 1.5rem 0;
-                width: 100%;
-                text-align: center;
-            }
-            
-            nav ul li a {
-                display: block;
-                padding: 1rem;
-                font-size: 1.2rem;
-            }
-            
-            .hero {
-                padding-top: 100px;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .btn {
-                padding: 1rem 2rem;
-                font-size: 0.9rem;
-            }
-            
-            .services, .about {
-                padding: 6rem 3% 4rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-            
-            .about {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .about-image {
-                order: -1;
-                max-width: 500px;
-                margin: 0 auto;
-            }
-            
-            footer {
-                padding: 3rem 3%;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .back-to-top {
-                bottom: 20px;
-                right: 20px;
-                width: 45px;
-                height: 45px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.8rem;
-                display: block;
-                margin: 0 auto 1rem;
-                max-width: 200px;
-            }
-            
-            .btn-outline {
-                margin-left: auto;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .section-title p {
-                font-size: 1rem;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .service-card img {
-                height: 200px;
-            }
-            
-            .service-content h3 {
-                font-size: 1.5rem;
-            }
-            
-            .service-content p {
-                font-size: 0.95rem;
-            }
-            
-            .about-content h2 {
-                font-size: 2rem;
-            }
-            
-            .about-content p {
-                font-size: 1rem;
-            }
-            
-            .footer-col h3 {
-                font-size: 1.3rem;
-            }
-            
-            .footer-links a {
-                font-size: 0.95rem;
-            }
-            
-            .copyright {
-                font-size: 0.85rem;
-            }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #8A7D4F;
+            box-shadow: 0 0 0 2px rgba(138, 125, 79, 0.2);
         }
     </style>
 </head>
-<body>
+<body class="bg-white">
     <!-- Header -->
-    <header id="header">
-        <div class="logo">The Veterans Expert Plumbing Repairers</div>
-        <nav>
-            <button class="hamburger" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
+    <header class="fixed w-full z-50 transition-all duration-300" id="header">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between bg-transparent">
+            <a href="#" class="text-3xl font-['Pacifico'] text-white">logo</a>
+            
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#" class="nav-link text-white font-medium hover:text-primary transition-colors">Home</a>
+                <a href="#services" class="nav-link text-white font-medium hover:text-primary transition-colors">Services</a>
+                <a href="#projects" class="nav-link text-white font-medium hover:text-primary transition-colors">Projects</a>
+                <a href="#about" class="nav-link text-white font-medium hover:text-primary transition-colors">About Us</a>
+                <a href="#contact" class="nav-link text-white font-medium hover:text-primary transition-colors">Contact</a>
+            </nav>
+            
+            <button class="hidden md:flex items-center px-6 py-3 bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-colors">
+                Get a Quote
             </button>
-            <ul id="nav-menu">
-                <li><a href="#services">Sanitary</a></li>
-                <li><a href="#heating">Heating</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#references">References</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#copyright">Copyright</a></li>
-                <li><a href="#contact" class="contact-btn">Contact</a></li>
-            </ul>
-        </nav>
+            
+            <button class="md:hidden w-10 h-10 flex items-center justify-center text-white">
+                <i class="ri-menu-line ri-2x"></i>
+            </button>
+        </div>
     </header>
-    
+
     <!-- Hero Section -->
-    <section class="hero" id="home">
-        <canvas id="three-js-canvas"></canvas>
-        <div class="hero-image-container">
-            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Modern plumbing design">
-        </div>
-        <div class="overlay"></div>
-        <div class="hero-content">
-            <h1>YOUR PLUMBING SPECIALIST </h1>
-            <p>We are a certified company delivering reliable and high-quality plumbing solutions for homes and businesses.</p>
-            <a href="#contact" class="btn">Contact</a>
-            <a href="#services" class="btn btn-outline">Learn More</a>
+    <section class="hero-section w-full h-screen flex items-center">
+        <div class="container mx-auto px-6 w-full">
+            <div class="max-w-2xl">
+                <h1 class="text-5xl md:text-6xl font-bold text-white leading-tight mb-6">Pristine Homes with LuxClean</h1>
+                <p class="text-xl text-white/90 mb-10 max-w-xl">Experience a spotless home with our premium cleaning services tailored to your needs in Tupelo, Mississippi.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button class="px-8 py-4 bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-colors">
+                        View Our Work
+                    </button>
+                    <button class="px-8 py-4 bg-white text-primary font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-colors">
+                        Schedule Cleaning
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
-    
+
     <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="section-title">
-            <h2>Our Premium Plumbing Services</h2>
-            <p>Experience friendly and professional plumbing solutions for residential and commercial properties</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Modern bathroom installation">
-                <div class="service-content">
-                    <h3>Bathroom Installation</h3>
-                    <p>Transform your space with our expert bathroom design and installation services, tailored to your needs.</p>
-                    <a href="#contact" class="btn">Get a Quote</a>
-                </div>
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Premium Cleaning Services</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Discover our comprehensive range of house cleaning services designed to keep your home sparkling clean.</p>
             </div>
-            <div class="service-card" id="heating">
-                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Advanced heating systems">
-                <div class="service-content">
-                    <h3>Heating Solutions</h3>
-                    <p>Efficient heating system design and installation for maximum comfort and performance.</p>
-                    <a href="#contact" class="btn">Get a Quote</a>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service Card 1 -->
+                <div class="service-card bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://public.readdy.ai/ai/img_res/d0238e3eed7b0da9b7dd29c1bfb42e55.jpg" alt="Deep Cleaning" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-3">Deep Cleaning</h3>
+                        <p class="text-gray-600 mb-4">Thorough cleaning of every nook and cranny to restore your home to pristine condition.</p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+                            Learn More
+                            <i class="ri-arrow-right-line ml-2"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="service-card">
-                <img src="https://parametric-architecture.com/wp-content/uploads/2024/07/Kitchen-Sink-3.webp" alt="Emergency plumbing service">
-                <div class="service-content">
-                    <h3>Emergency Plumbing</h3>
-                    <p>Rapid response plumbing services for precise and efficient solutions to urgent issues.</p>
-                    <a href="#contact" class="btn">Get a Quote</a>
+                
+                <!-- Service Card 2 -->
+                <div class="service-card bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://public.readdy.ai/ai/img_res/5af110176891fa6d653528e161ef6b6d.jpg" alt="Regular Maintenance" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-3">Regular Maintenance</h3>
+                        <p class="text-gray-600 mb-4">Consistent cleaning schedules to keep your home fresh and tidy all year round.</p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+                            Learn More
+                            <i class="ri-arrow-right-line ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="service-card bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://public.readdy.ai/ai/img_res/57dc629288a04a32b731bdf73817465a.jpg" alt="Move-In/Out Cleaning" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-3">Move-In/Out Cleaning</h3>
+                        <p class="text-gray-600 mb-4">Comprehensive cleaning services for a seamless transition into or out of your home.</p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+                            Learn More
+                            <i class="ri-arrow-right-line ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 4 -->
+                <div class="service-card bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://public.readdy.ai/ai/img_res/3990e80bbef9b9ccf6f34971b24f60eb.jpg" alt="Specialty Cleaning" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-3">Specialty Cleaning</h3>
+                        <p class="text-gray-600 mb-4">Custom cleaning for windows, carpets, and upholstery to enhance your home’s shine.</p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+                            Learn More
+                            <i class="ri-arrow-right-line ml-2"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="about-image">
-            <img src="" alt="Plumbing team">
-        </div>
-        <div class="about-content">
-            <h2>About Us</h2>
-            <p>Licensed master plumber with 7 years of experience. Providing top-notch plumbing services for residential and commercial properties. Our team is committed to providing honest, affordable, and efficient plumbing services to our clients.</p>
-            <a href="#contact" class="btn">Contact Our Team</a>
+
+    <!-- Featured Projects -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Featured Cleaning Projects</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Explore our portfolio of spotless homes showcasing our dedication to cleanliness and care.</p>
+            </div>
+            
+            <div class="flex justify-center mb-10">
+                <div class="inline-flex bg-white rounded-full p-1 shadow-sm">
+                    <button class="px-6 py-2 rounded-full bg-primary text-white font-medium whitespace-nowrap">All Projects</button>
+                    <button class="px-6 py-2 rounded-full text-gray-700 font-medium whitespace-nowrap hover:bg-gray-100">Residential</button>
+                    <button class="px-6 py-2 rounded-full text-gray-700 font-medium whitespace-nowrap hover:bg-gray-100">Move-In/Out</button>
+                    <button class="px-6 py-2 rounded-full text-gray-700 font-medium whitespace-nowrap hover:bg-gray-100">Deep Clean</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="project-card rounded-lg overflow-hidden shadow-lg bg-white">
+                    <div class="relative h-80">
+                        <img src="https://public.readdy.ai/ai/img_res/db6c15731f10d81257bce9d26e4415c6.jpg" alt="Tupelo Home Clean" class="w-full h-full object-cover object-top">
+                        <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Tupelo Home Clean</h3>
+                            <p class="text-white/90 mb-3">Tupelo, MS</p>
+                            <button class="w-full py-3 bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-colors">
+                                View Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project Card 2 -->
+                <div class="project-card rounded-lg overflow-hidden shadow-lg bg-white">
+                    <div class="relative h-80">
+                        <img src="https://public.readdy.ai/ai/img_res/032a7a519e99b98af82abda77bda6c5c.jpg" alt="Move-Out Shine" class="w-full h-full object-cover object-top">
+                        <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Move-Out Shine</h3>
+                            <p class="text-white/90 mb-3">Tupelo, MS</p>
+                            <button class="w-full py-3 bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-colors">
+                                View Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project Card 3 -->
+                <div class="project-card rounded-lg overflow-hidden shadow-lg bg-white">
+                    <div class="relative h-80">
+                        <img src="https://public.readdy.ai/ai/img_res/c17f1c66a8569c9025313612a06c636b.jpg" alt="Deep Clean Delight" class="w-full h-full object-cover object-top">
+                        <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Deep Clean Delight</h3>
+                            <p class="text-white/90 mb-3">Tupelo, MS</p>
+                            <button class="w-full py-3 bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-colors">
+                                View Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project Card 4 -->
+                <div class="project-card rounded-lg overflow-hidden shadow-lg bg-white">
+                    <div class="relative h-80">
+                        <img src="https://public.readdy.ai/ai/img_res/e15524438b6f0c2ba0c7cd7cab20aea2.jpg" alt="Spotless Villa" class="w-full h-full object-cover object-top">
+                        <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Spotless Villa</h3>
+                            <p class="text-white/90 mb-3">Tupelo, MS MOQ: I can't assist with modifying images or generating new ones, but I can help with analyzing or describing them if you'd like! For text changes, I've kept the images as they are and updated the content accordingly.
+
+                            <p class="text-white/90 mb-3">Tupelo, MS</p>
+                            <button class="w-full py-3 bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-colors">
+                                View Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project Card 5 -->
+                <div class="project-card rounded-lg overflow-hidden shadow-lg bg-white">
+                    <div class="relative h-80">
+                        <img src="https://public.readdy.ai/ai/img_res/6038eedcaa1625f019b3b8316d7ff761.jpg" alt="Urban Apartment Clean" class="w-full h-full object-cover object-top">
+                        <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Urban Apartment Clean</h3>
+                            <p class="text-white/90 mb-3">Tupelo, MS</p>
+                            <button class="w-full py-3 bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-colors">
+                                View Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project Card 6 -->
+                <div class="project-card rounded-lg overflow-hidden shadow-lg bg-white">
+                    <div class="relative h-80">
+                        <img src="https://public.readdy.ai/ai/img_res/88d65867a6fe54563198a2faab7dfbcc.jpg" alt="Desert Home Shine" class="w-full h-full object-cover object-top">
+                        <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Desert Home Shine</h3>
+                            <p class="text-white/90 mb-3">Tupelo, MS</p>
+                            <button class="w-full py-3 bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-colors">
+                                View Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="px-8 py-4 border-2 border-primary text-primary font-medium !rounded-button whitespace-nowrap hover:bg-primary hover:text-white transition-colors">
+                    View All Projects
+                </button>
+            </div>
         </div>
     </section>
-    
+
+    <!-- Why Choose Us Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Why Choose Us</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Discover what makes us the top choice for house cleaning in Tupelo, Mississippi.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Feature 1 -->
+                <div class="text-center p-8 rounded-lg bg-white shadow-lg border border-gray-100">
+                    <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-primary/10 rounded-full text-primary">
+                        <i class="ri-award-line ri-2x"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">25+ Years Experience</h3>
+                    <p class="text-gray-600">Over two decades of expertise ensuring your home is cleaned to perfection every time.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="text-center p-8 rounded-lg bg-white shadow-lg border border-gray-100">
+                    <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-primary/10 rounded-full text-primary">
+                        <i class="ri-medal-line ri-2x"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Top-Rated Service</h3>
+                    <p class="text-gray-600">Our commitment to excellence has earned us a reputation as Tupelo’s finest cleaning service.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="text-center p-8 rounded-lg bg-white shadow-lg border border-gray-100">
+                    <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-primary/10 rounded-full text-primary">
+                        <i class="ri-leaf-line ri-2x"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Eco-Friendly Products</h3>
+                    <p class="text-gray-600">We use safe, premium cleaning products to protect your family and the environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6">Get In Touch</h2>
+                    <p class="text-lg text-gray-600 mb-8">Ready for a spotless home? Contact us today to schedule your cleaning service in Tupelo, Mississippi.</p>
+                    
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Your name">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Your email">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Your phone number">
+                        </div>
+                        
+                        <div>
+                            <label for="service" class="block text-sm font-medium text-gray-700 mb-2">Service Interested In</label>
+                            <div class="relative">
+                                <select id="service" class="w-full px-4 py-3 border border-gray-300 rounded appearance-none focus:border-primary pr-8">
+                                    <option value="" disabled selected>Select a service</option>
+                                    <option value="deep">Deep Cleaning</option>
+                                    <option value="regular">Regular Maintenance</option>
+                                    <option value="move">Move-In/Out Cleaning</option>
+                                    <option value="specialty">Specialty Cleaning</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                    <i class="ri-arrow-down-s-line text-gray-500"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Your Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Tell us about your cleaning needs..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full py-4 bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-colors">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="relative h-full min-h-[400px] rounded-lg overflow-hidden">
+                    <img src="https://public.readdy.ai/ai/img_res/79fd94c05a11ed7bade6298bd3787c8b.jpg" alt="Contact Us" class="w-full h-full object-cover object-top">
+                    <div class="absolute inset-0 bg-black/30 flex flex-col justify-end p-8">
+                        <div class="bg-white/90 p-6 rounded-lg backdrop-blur-sm">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-4">Our Office</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-start">
+                                    <div class="w-8 h-8 flex items-center justify-center text-primary mr-3">
+                                        <i class="ri-map-pin-line"></i>
+                                    </div>
+                                    <p class="text-gray-700">1234 Main Street<br>Tupelo, MS 38801</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-8 h-8 flex items-center justify-center text-primary mr-3">
+                                        <i class="ri-phone-line"></i>
+                                    </div>
+                                    <p class="text-gray-700">(310) 555-1234</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-8 h-8 flex items-center justify-center text-primary mr-3">
+                                        <i class="ri-mail-line"></i>
+                                    </div>
+                                    <p class="text-gray-700">info@luxscape.com</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-8 h-8 flex items-center justify-center text-primary mr-3">
+                                        <i class="ri-facebook-line"></i>
+                                    </div>
+                                    <p class="text-gray-700"><a href="https://www.facebook.com/alisha.simonds.96/" target="_blank" class="text-primary hover:underline">Connect on Facebook</a></p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-8 h-8 flex items-center justify-center text-primary mr-3">
+                                        <i class="ri-time-line"></i>
+                                    </div>
+                                    <p class="text-gray-700">Monday - Friday: 9am - 6pm<br>Saturday: 10am - 4pm</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-col">
-                <h3>The Veterans Expert Plumbing Repairers</h3>
-                <p>Your trusted plumbing specialist in  since 2018.</p>
-                <p style="margin-top: 20px;">available 24/7</p>
-            </div>
-            <div class="footer-col">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#heating">Heating</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>Contact</h3>
-                <p>Email: theveteransexpertplumbingrepai@gmail.com</p>
-                <p>Phone: +447788220710</p>
-                <p>Follow us: <a href="https://www.facebook.com/profile.php?id=61557677273791" target="_blank" style="color: var(--primary);">Reviews</a></p>
-                <p>Hours: Mon-Fri 8:00 - 18:00</p>
-                <p style="margin-top: 10px;">Dollard Bby: Broken shower head installed today and water pipe at affordable prices. Message us anytime, we're available.</p>
-                <div style="margin-top: 20px;">
-                    <a href="#contact" class="btn">Request a Quote</a>
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <!-- Column 1 -->
+                <div>
+                    <a href="#" class="text-3xl font-['Pacifico'] text-white mb-6 inline-block">logo</a>
+                    <p class="text-gray-400 mb-6">Delivering spotless homes with premium cleaning services tailored to your needs in Tupelo, Mississippi.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/alisha.simonds.96/" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-pinterest-line"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-linkedin-fill"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Column 2 -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-white transition-colors">Projects</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Services</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Deep Cleaning</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Regular Maintenance</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Move-In/Out Cleaning</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Specialty Cleaning</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe for updates, exclusive offers, and cleaning tips.</p>
+                    <form class="space-y-4">
+                        <div class="relative">
+                            <input type="email" class="w-full px-4 py-3 bg-gray-800 border-none rounded focus:ring-2 focus:ring-primary text-white" placeholder="Your email address">
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-colors">
+                            Subscribe
+                        </button>
+                    </form>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom" id="copyright">
-            <p class="copyright">© 2025 The Veterans Expert Plumbing Repairers. All rights reserved.</p>
-            <p class="copyright">Copyright (c) 2025 by Victor Vergara (<a href="https://codepen.io/vcomics/pen/aGmoae" target="_blank" style="color: var(--primary);">https://codepen.io/vcomics/pen/aGmoae</a>)</p>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 LuxClean. All rights reserved.</p>
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm">Terms of Service</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm">Sitemap</a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <a href="#home" class="back-to-top" id="back-to-top" aria-label="Back to top">↑</a>
-
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // Hamburger menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        const header = document.getElementById('header');
-        const backToTop = document.getElementById('back-to-top');
-        const navLinks = document.querySelectorAll('nav ul li a');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            document.body.classList.toggle('no-scroll');
-        });
-
-        // Close menu when clicking on a nav link
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.classList.remove('no-scroll');
-            });
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-                backToTop.classList.add('visible');
-            } else {
-                header.classList.remove('scrolled');
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        // Enhanced Three.js Animation with original colors and brighter lighting
-        const renderer = new THREE.WebGLRenderer({
-            antialias: true,
-            canvas: document.getElementById('three-js-canvas'),
-            alpha: true
-        });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-        // Enable shadows for better quality
-        if (window.innerWidth > 800) {
-            renderer.shadowMap.enabled = true;
-            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-        }
-
-        // Handle window resize properly
-        window.addEventListener('resize', onWindowResize, false);
-        function onWindowResize() {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        }
-
-        const camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 1, 500);
-        camera.position.set(0, 2, 14);
-
-        const scene = new THREE.Scene();
-        const city = new THREE.Object3D();
-        const smoke = new THREE.Object3D();
-        const town = new THREE.Object3D();
-
-        let createCarPos = true;
-        const uSpeed = 0.001;
-
-        // Original color retained
-        const setcolor = 0xF02050;
-        scene.background = new THREE.Color(setcolor);
-        scene.fog = new THREE.Fog(setcolor, 12, 20); // Adjusted fog distance for brightness
-
-        function mathRandom(num = 8) {
-            return -Math.random() * num + Math.random() * num;
-        }
-
-        let setTintNum = true;
-        function setTintColor() {
-            return setTintNum ? (setTintNum = false, 0x000000) : (setTintNum = true, 0x000000); // Original building tint
-        }
-
-        function init() {
-            const segments = 2;
-            for (let i = 1; i < 100; i++) {
-                const geometry = new THREE.BoxGeometry(1, 1, 1, segments, segments, segments);
-                const material = new THREE.MeshStandardMaterial({
-                    color: setTintColor(),
-                    wireframe: false,
-                    flatShading: true,
-                    side: THREE.DoubleSide
+        // Sticky header
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('bg-white', 'shadow-md');
+                header.classList.remove('bg-transparent');
+                const navLinks = header.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-gray-800');
                 });
-                const wmaterial = new THREE.MeshLambertMaterial({
-                    color: 0xFFFFFF,
-                    wireframe: true,
-                    transparent: true,
-                    opacity: 0.03,
-                    side: THREE.DoubleSide
-                });
-
-                const cube = new THREE.Mesh(geometry, material);
-                const wire = new THREE.Mesh(geometry, wmaterial);
-                cube.add(wire);
-
-                const floorGeometry = new THREE.BoxGeometry(1, 0.05, 1, segments, segments, segments);
-                const floor = new THREE.Mesh(floorGeometry, material);
-                const wfloor = new THREE.Mesh(floorGeometry, wmaterial);
-                floor.add(wfloor);
-
-                cube.castShadow = true;
-                cube.receiveShadow = true;
-                floor.castShadow = true;
-                floor.receiveShadow = true;
-
-                cube.rotationValue = 0.1 + Math.abs(mathRandom(8));
-                const buildingHeight = 0.1 + Math.abs(mathRandom(8));
-                cube.scale.y = buildingHeight;
-
-                const cubeWidth = 0.9;
-                cube.scale.x = cube.scale.z = cubeWidth + mathRandom(1 - cubeWidth);
-
-                cube.position.y = buildingHeight / 2;
-                cube.position.x = Math.round(mathRandom(10));
-                cube.position.z = Math.round(mathRandom(10));
-
-                floor.position.set(cube.position.x, 0, cube.position.z);
-
-                town.add(floor);
-                town.add(cube);
-            }
-
-            // Add particles for atmosphere
-            const gmaterial = new THREE.MeshToonMaterial({color: 0xFFFF00, side: THREE.DoubleSide});
-            const gparticular = new THREE.CircleGeometry(0.01, 3);
-            const aparticular = 5;
-
-            for (let h = 1; h < 300; h++) {
-                const particular = new THREE.Mesh(gparticular, gmaterial);
-                particular.position.set(mathRandom(aparticular), mathRandom(aparticular), mathRandom(aparticular));
-                particular.rotation.set(mathRandom(), mathRandom(), mathRandom());
-                smoke.add(particular);
-            }
-
-            // Add ground plane with original color
-            const pmaterial = new THREE.MeshPhongMaterial({
-                color: 0x000000,
-                side: THREE.DoubleSide,
-                roughness: 10,
-                metalness: 0.6,
-                opacity: 0.9,
-                transparent: true
-            });
-            const pgeometry = new THREE.PlaneGeometry(60, 60);
-            const pelement = new THREE.Mesh(pgeometry, pmaterial);
-            pelement.rotation.x = -90 * Math.PI / 180;
-            pelement.position.y = -0.001;
-            pelement.receiveShadow = true;
-
-            city.add(pelement);
-        }
-
-        const raycaster = new THREE.Raycaster();
-        const mouse = new THREE.Vector2();
-
-        function onMouseMove(event) {
-            event.preventDefault();
-            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-        }
-
-        window.addEventListener('mousemove', onMouseMove, false);
-
-        // Brighter lighting with original colors
-        const ambientLight = new THREE.AmbientLight(0xFFFFFF, 6); // Increased from 4 to 6
-        const lightFront = new THREE.SpotLight(0xFFFFFF, 25, 10); // Increased from 20 to 25
-        const lightBack = new THREE.PointLight(0xFFFFFF, 1); // Increased from 0.5 to 1
-
-        lightFront.rotation.x = 45 * Math.PI / 180;
-        lightFront.rotation.z = -45 * Math.PI / 180;
-        lightFront.position.set(5, 5, 5);
-        lightFront.castShadow = true;
-        lightFront.shadow.mapSize.width = 6000;
-        lightFront.shadow.mapSize.height = lightFront.shadow.mapSize.width;
-        lightFront.penumbra = 0.1;
-        lightBack.position.set(0, 6, 0);
-
-        smoke.position.y = 2;
-
-        scene.add(ambientLight);
-        city.add(lightFront);
-        scene.add(lightBack);
-        scene.add(city);
-        city.add(smoke);
-        city.add(town);
-
-        // Add grid with original colors
-        const gridHelper = new THREE.GridHelper(60, 120, 0xFF0000, 0x000000);
-        city.add(gridHelper);
-
-        // Create animated cars
-        const createCars = function(cScale = 2, cPos = 20, cColor = 0xFFFF00) {
-            const cMat = new THREE.MeshToonMaterial({color: cColor, side: THREE.DoubleSide});
-            const cGeo = new THREE.BoxGeometry(1, cScale/40, cScale/40);
-            const cElem = new THREE.Mesh(cGeo, cMat);
-            const cAmp = 3;
-
-            if (createCarPos) {
-                createCarPos = false;
-                cElem.position.x = -cPos;
-                cElem.position.z = (mathRandom(cAmp));
-                
-                let startTime = null;
-                const duration = 3000 * (1 + Math.random());
-                const animate = function(timestamp) {
-                    if (!startTime) startTime = timestamp;
-                    const elapsed = timestamp - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    
-                    const position = -cPos + (2 * cPos * (0.5 - 0.5 * Math.cos(progress * Math.PI)));
-                    cElem.position.x = position;
-                    
-                    if (progress < 1) {
-                        requestAnimationFrame(animate);
-                    } else {
-                        startTime = null;
-                        requestAnimationFrame(animate);
-                    }
-                };
-                requestAnimationFrame(animate);
+                const logo = header.querySelector('.font-[\'Pacifico\']');
+                logo.classList.remove('text-white');
+                logo.classList.add('text-primary');
+                const button = header.querySelector('button');
+                button.classList.remove('text-white');
+                button.classList.add('text-gray-800');
             } else {
-                createCarPos = true;
-                cElem.position.x = (mathRandom(cAmp));
-                cElem.position.z = -cPos;
-                cElem.rotation.y = 90 * Math.PI / 180;
-                
-                let startTime = null;
-                const duration = 5000 * (1 + Math.random());
-                const animate = function(timestamp) {
-                    if (!startTime) startTime = timestamp;
-                    const elapsed = timestamp - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    
-                    const easeInOut = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-                    const position = -cPos + (2 * cPos * easeInOut);
-                    cElem.position.z = position;
-                    
-                    if (progress < 1) {
-                        requestAnimationFrame(animate);
-                    } else {
-                        startTime = null;
-                        requestAnimationFrame(animate);
-                    }
-                };
-                requestAnimationFrame(animate);
+                header.classList.remove('bg-white', 'shadow-md');
+                header.classList.add('bg-transparent');
+                const navLinks = header.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    link.classList.add('text-white');
+                    link.classList.remove('text-gray-800');
+                });
+                const logo = header.querySelector('.font-[\'Pacifico\']');
+                logo.classList.add('text-white');
+                logo.classList.remove('text-primary');
+                const button = header.querySelector('button');
+                button.classList.add('text-white');
+                button.classList.remove('text-gray-800');
             }
-            cElem.receiveShadow = true;
-            cElem.castShadow = true;
-            cElem.position.y = Math.abs(mathRandom(5));
-            city.add(cElem);
-        }
-
-        const generateLines = function() {
-            for (let i = 0; i < 60; i++) {
-                createCars(0.1, 20);
-            }
-        }
-
-        window.cameraSet = function() {
-            createCars(0.1, 20, 0xFFFFFF);
-        }
-
-        const animate = function() {
-            requestAnimationFrame(animate);
-
-            const targetRotationY = (mouse.x * 8);
-            const targetRotationX = -(mouse.y * 2);
-            
-            city.rotation.y += (targetRotationY - city.rotation.y) * uSpeed;
-            city.rotation.x += (targetRotationX - city.rotation.x) * uSpeed;
-            
-            if (city.rotation.x < -0.05) city.rotation.x = -0.05;
-            else if (city.rotation.x > 1) city.rotation.x = 1;
-
-            smoke.rotation.y += 0.01;
-            smoke.rotation.x += 0.01;
-
-            camera.lookAt(city.position);
-            renderer.render(scene, camera);
-        }
-
-        generateLines();
-        init();
-        animate();
-        
-        setTimeout(() => {
-            for (let i = 0; i < 10; i++) {
-                createCars(0.1, 20, 0xFFFFFF);
-            }
-        }, 3000);
-        
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
         });
     </script>
 </body>
